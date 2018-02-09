@@ -17,10 +17,17 @@
   <div class= "container">
     <div class="header-left">
       <img class="logo" src="http://chantalmonster.com/wp-content/uploads/2016/02/Chantal-followmyjourney.png">
-      <a href="/home" class="menu-icon"><span class="fa fa-bars menu-icon"></span></a>
+      <a href="/" class="menu-icon"><span class="fa fa-bars menu-icon"></span></a>
     </div>
     <div class="header-right">
-      <a class="" href="/form/login">Log in</a>
+      <nav>
+            {{if .LoggedIn}}
+            <a href="/api/logout"><p id="loginOut">Log Out</p></a>
+            {{else}}
+            <a href="/form/login"><p id="loginOut">Log In</p></a>
+            {{end}}
+        </nav>
+
 
   </div>
 </header>
