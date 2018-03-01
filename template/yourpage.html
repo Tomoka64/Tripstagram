@@ -1,21 +1,18 @@
 {{template "header"}}
-{{template "header2"}}
+{{template "header2" .}}
 
 <link rel="stylesheet" href="/public/yourpage.css">
 <body>
 <h1>welcome</h1>
 <div class = "posts">
-  <h1>your posts</h1>
-  <table>
-  {{range .Posts}}
-  <thead>
-    <tr>
-      <th> {{.Posts.Title}} </th>
-
-    </tr>
-  </thead>
-  {{end}}
-  </table>
+  <h1>{{.User.Email}} posts</h1>
+    <div class = "table">
+    <table>
+    {{range .NewPosts}}
+    <p>{{.Title}} - {{.Location}} - {{.Review}} - {{.Rating}}</p>
+    {{end}}
+    </table>
+  </div>
 </div>
 </body>
 

@@ -1,5 +1,7 @@
 package main
 
+import "time"
+
 type User struct {
 	Email    string
 	UserName string `datastore:"-"`
@@ -17,6 +19,8 @@ type NewPost struct {
 	Title    string
 	Location string
 	// Image    Image
-	Review string
-	Rating string
+	Review   string
+	Rating   string
+	Time     time.Time
+	UserName string
 }
