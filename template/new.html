@@ -1,0 +1,29 @@
+{{template "header"}}
+{{template "header2"}}
+<link rel="stylesheet" href="/public/new.css">
+<h2>New Post</h2>
+
+<body>
+<form action="/post-process" method="POST">
+  <label>Title:<br>
+    <input type="text" name="Title" placeholder="Title">
+  </label><br>
+  <label>Location:<br>
+    <input type="text" name="Location" placeholder="Location">
+  </label><br>
+  <!-- <label>Image:<br>
+    <input type="image" name="Image" placeholder="Image"> -->
+  <!-- </label><br> -->
+  <label>Rating:<br>
+    <input type="text" name="Rating" placeholder="Rating">
+  </label><br>
+  <label>Review<br>
+    <textarea name="Review"
+              placeholder="Review"></textarea>
+  </label><br>
+
+  <input type="submit">
+</form>
+</body>
+
+{{template "footer"}}

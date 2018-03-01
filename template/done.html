@@ -1,0 +1,14 @@
+{{template "header"}}
+{{template "header2" .}}
+{{define "done"}}
+
+  <p>done created</p>
+  {{if .CreatedID}}
+<strong>Created {{.CreatedID}}</strong>
+{{end}}
+  <a href="/yourpage" id="create-account">go back to your page</a>
+
+{{end}}
+
+
+{{template "footer"}}
