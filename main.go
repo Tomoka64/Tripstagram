@@ -41,9 +41,10 @@ func init() {
 func PostPage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	serveTemplate(res, req, "new.html")
 }
-func Yourpage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	serveTemplate(res, req, "yourpage.html")
-}
+
+// func Yourpage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+// 	serveTemplate(res, req, "yourpage.html")
+// }
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	serveTemplate(res, req, "home.html")
 }
