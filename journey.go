@@ -9,13 +9,6 @@ import (
 )
 
 //
-type NewPost struct {
-	Title    string
-	Location string
-	// Image    Image
-	Review string
-	Rating string
-}
 
 // type Image struct {
 // 	width  int

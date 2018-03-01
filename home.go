@@ -19,7 +19,7 @@ func Yourpage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	model := HomeModel{}
 	if err != nil {
 		// not logged in
-		tpl.ExecuteTemplate(res, "/", &SessionData{})
+		tpl.ExecuteTemplate(res, "yourpage.html", SessionData{})
 	} else {
 		// logged in
 		var sd SessionData
@@ -45,7 +45,7 @@ func Yourpage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 			model.Posts = append(model.Posts, post)
 		}
 
-		err = tpl.ExecuteTemplate(res, "yourpage.html", &model)
+		err = tpl.ExecuteTemplate(res, "yourpage.html", model.Sd)
 
 		if err != nil {
 			http.Error(res, err.Error(), 500)
