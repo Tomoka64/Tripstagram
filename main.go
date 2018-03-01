@@ -1,10 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"html/template"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
 )
 
 //
@@ -39,7 +42,20 @@ func init() {
 }
 
 func PostPage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	serveTemplate(res, req, "new.html")
+	memItem, err := getSession(req)
+	ctx := appengine.NewContext(req)
+	if err != nil {
+		// not logged in
+		log.Infof(ctx, "Attempt to post tweet from logged out user")
+		http.Error(res, "You must be logged in", http.StatusForbidden)
+		return
+	} else {
+		// logged in
+		var sd SessionData
+		json.Unmarshal(memItem.Value, &sd)
+		sd.LoggedIn = true
+		tpl.ExecuteTemplate(res, "new.html", sd)
+	}
 }
 
 // func Yourpage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
