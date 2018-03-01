@@ -1,35 +1,20 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
-	"io"
 	"net/http"
-
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/memcache"
 )
 
 func serveTemplate(res http.ResponseWriter, req *http.Request, templateName string) {
-	session := getSession(req)
-	if len(session.Value) > 0 {
+	memItem, err := getSession(req)
+	if err != nil {
+		// not logged in
+		tpl.ExecuteTemplate(res, templateName, SessionData{})
+	} else {
+		// logged in
 		var sd SessionData
-		json.Unmarshal(session.Value, &sd)
+		json.Unmarshal(memItem.Value, &sd)
 		sd.LoggedIn = true
 		tpl.ExecuteTemplate(res, templateName, sd)
-	} else {
-		ctx := appengine.NewContext(req)
-		i, err := memcache.Get(ctx, templateName)
-		if err != nil {
-			buf := new(bytes.Buffer)
-			writ := io.MultiWriter(res, buf)
-			tpl.ExecuteTemplate(writ, templateName, SessionData{})
-			memcache.Set(ctx, &memcache.Item{
-				Value: buf.Bytes(),
-				Key:   templateName,
-			})
-			return
-		}
-		io.WriteString(res, string(i.Value)) // we're serving the page from memcache
 	}
 }

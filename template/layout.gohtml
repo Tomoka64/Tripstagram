@@ -7,7 +7,6 @@
     <title>Follow my Journey</title>
     <link rel="stylesheet" href="/public/main.css">
     <link rel="stylesheet" href="/Users/tomoka/Downloads/font-awesome-4.7.0/css/font-awesome.css">
-    <!-- <link rel="stylesheet" href="responsive.css"> -->
 
   </head>
 
@@ -22,11 +21,19 @@
     <div class="header-right">
       <nav>
             {{if .LoggedIn}}
-            <a href="/api/logout"><p id="loginOut">Log Out</p></a>
+            <ul>
+              <li>
+                <a href="/api/logout"><p id="loginOut">Log Out</p></a>
+              </li>
+              <li>
+                <a href="/post"><p id="post">Post</p></a>
+              </li>
+            <ul>
             {{else}}
-            <a href="/form/login"><p id="loginOut">Log In</p></a>
+                <a href="/form/login"><p id="loginOut">Log In</p></a>
             {{end}}
         </nav>
+
 
 
   </div>

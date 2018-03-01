@@ -1,8 +1,8 @@
 {{template "header"}}
-{{template "header2"}}
+{{template "header2" .}}
 <link rel="stylesheet" href="/public/login.css">
     <form method="POST" action="/api/login">
-        <i class="fa fa-user fa-5x"></i>
+        
         <input id="userName" name="userName" placeholder="Enter your user name">
         <p class="form-field-err"></p>
         <input id="password" name="password" type="password" placeholder="Enter your password">

@@ -1,8 +1,8 @@
 {{template "header"}}
 <link rel="stylesheet" href="/public/signup.css">
 {{template "header2" .}}
+
 <form method="POST" action="/api/createuser" id="form-create-user">
-    <i class="fa fa-user fa-5x"></i>
     <input id="email" name="email" type="email" placeholder="Enter your email">
     <p class="form-field-err"></p>
     <input id="userName" name="userName" placeholder="Enter your account name" autocomplete="off">
@@ -38,8 +38,7 @@
             }
         });
     });
-    //    Validate passwords
-    //    listen for submit button click
+    //    this part - credit to Todd Mcleod
     formUser.addEventListener('submit', function(e){
         var ok = validatePasswords();
         if (!ok) {

@@ -26,6 +26,7 @@ func init() {
 	r.POST("/api/createuser", createUser)
 	r.POST("/api/login", loginProcess)
 	r.GET("/api/logout", logout)
+	r.GET("/yourpage", Yourpage)
 	// r.GET("/loginWithFB", handleFacebookLogin)
 	// r.GET("/login/facebook", facebookk)
 	// r.POST("/oauth2callback", handleFacebookCallback)
@@ -35,6 +36,9 @@ func init() {
 	tpl = template.Must(template.ParseGlob("template/*"))
 }
 
+func Yourpage(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+	serveTemplate(res, req, "yourpage.html")
+}
 func Home(res http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	serveTemplate(res, req, "home.html")
 }

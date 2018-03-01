@@ -4,21 +4,18 @@ import (
 	"net/http"
 
 	"google.golang.org/appengine"
-	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/memcache"
 )
 
-func getSession(req *http.Request) *memcache.Item {
+func getSession(req *http.Request) (*memcache.Item, error) {
 	cookie, err := req.Cookie("session")
 	if err != nil {
-		return &memcache.Item{}
+		return &memcache.Item{}, err
 	}
-
 	ctx := appengine.NewContext(req)
 	item, err := memcache.Get(ctx, cookie.Value)
 	if err != nil {
-		return &memcache.Item{}
+		return &memcache.Item{}, err
 	}
-	log.Infof(ctx, "%s", string(item.Value))
-	return item
+	return item, nil
 }
