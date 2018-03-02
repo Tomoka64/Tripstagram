@@ -9,7 +9,8 @@
     <div class = "table">
     <table>
     {{range .NewPosts}}
-    <p>{{.Title}} - {{.Location}} - {{.Review}} - {{.Rating}}</p>
+    <p>{{.Title}} - {{.Location}} - {{.Review}} - {{.Rating}} </p>
+    <!-- <a href="/posts/delete/?title={{.Title}}">delete</a></p> -->
     {{end}}
     </table>
   </div>

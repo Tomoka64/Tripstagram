@@ -1,6 +1,8 @@
 package main
 
-import "time"
+import (
+	"time"
+)
 
 type User struct {
 	Email    string
@@ -18,9 +20,15 @@ type SessionData struct {
 type NewPost struct {
 	Title    string
 	Location string
-	// Image    Image
+	// Image    multipart.File
 	Review   string
 	Rating   string
 	Time     time.Time
 	UserName string
 }
+
+//
+// type Image interface {
+// 	image.Image
+// 	Set(x, y int, c color.Color)
+// }

@@ -29,9 +29,10 @@ li {
   color: #808080;
 }
 
-.header-right li {
+.header-right li{
+  height: 65px;
   float: left;
-  padding: 20px 30px;
+  padding: 0px 30px;
   border-left: 1px solid #dddddd;
 }
 

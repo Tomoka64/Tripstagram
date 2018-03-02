@@ -1,14 +1,11 @@
 {{template "header"}}
 {{template "header2" .}}
-{{define "done"}}
+<link rel="stylesheet" href="/public/done.css">
+<body>
+  <p> successfully created your post<br>
+  <a href="/yourpage" id="create-account">go back to see your new post</a></p>
+</body>
 
-  <p>done created</p>
-  {{if .CreatedID}}
-<strong>Created {{.CreatedID}}</strong>
-{{end}}
-  <a href="/yourpage" id="create-account">go back to your page</a>
-
-{{end}}
 
 
 {{template "footer"}}
